@@ -1,0 +1,46 @@
+.hidden {
+  display: none !important;
+}
+.description {
+  flex-grow: 1;
+  padding: 10px 20px;
+}
+
+.loading {
+  display: block;
+}
+.spinner {
+  margin: 20px 0;
+  margin-bottom: 20px;
+  padding: 30px 50px;
+  text-align: center;
+  border-radius: 4px;
+  display: none;
+}
+
+.spinner.loading{
+  display: block;
+}
+
+.contentBlock__alert{
+  height: 100px;
+}
+.contentBlock__alert{
+  display: none;
+}
+.contentBlock__alert.connected{
+  display: block;
+}
+
+.noFoundMarker {
+  margin: 10px;
+}
+
+.noFoundMarker.hidden {
+  display: none;
+}
+.contentBlock__nav {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
