@@ -1,8 +1,9 @@
-import { Col, Row, Spin, Alert, Input, Pagination, Anchor } from "antd";
-import Description from "../Description/Description";
-import { Offline, Online } from "react-detect-offline";
 import { debounce } from "lodash";
-import { RatedListConsumer } from "../ratedList-context/ratedList-context";
+
+import NavigationTab from "../NavigationTab/NavigationTab";
+import BodyCotent from "../BodyContent/BodyContent";
+
+import RatedList from "../RatedList/RatedList";
 
 import "./ContentBlock.css";
 import React from "react";
@@ -133,139 +134,25 @@ export default class ContentBlock extends React.Component {
       totalPages,
       switchedOn,
     } = this.state;
-    const styleForDescriptionLay = {
-      height: "279px",
-      boxShadow: "4px 4px 10px 5px #D9D9D9",
-      display: "flex",
-      justifyContent: "flex-end",
-    };
 
-    const pagStyle = {
-      display: "flex",
-      justifyContent: " center",
-      marginTop: "20px",
-    };
-
-    const rowStyle = {
-      marginBottom: "auto",
-    };
     return (
       <>
-        <nav className="contentBlock__nav">
-          <Anchor
-            onClick={(e, link) => this.onSwitch(link.href)}
-            direction="horizontal"
-            items={[
-              {
-                key: "part-1",
-                href: "#Search",
-                title: "Search",
-              },
-              {
-                key: "part-2",
-                href: "#Rated",
-                title: "Rated",
-              },
-            ]}
-          />
-        </nav>
-        <div
-          className="contentBlock__search"
-          style={{ display: switchedOn === "#Search" ? "block" : "none" }}
-        >
-          <Input
-            value={inputValue}
-            placeholder="Search films"
-            onKeyUp={() => this.onDelayedSearch()}
-            onChange={(e) => {
-              this.onChangeInput(e);
-            }}
-          />
-          <h1 className={someFound ? "noFoundMarker hidden" : "noFoundMarker"}>
-            No films found
-          </h1>
-          <br />
-          <br />
-          <Offline>
-            <Alert type="error" message="Error text" banner />
-          </Offline>
-          <div className={isLoading ? "spinner loading" : "spinner"}>
-            <Spin tip="Loading" size="large">
-              <div className="spinner__content" />
-            </Spin>
-          </div>
-          <div
-            className={
-              isConnected
-                ? "contentBlock__alert"
-                : "contentBlock__alert connected"
-            }
-          >
-            <Online>
-              <Alert
-                message="can not recive data from server"
-                description="may be server does not work in your country"
-                type="warning"
-              />
-            </Online>
-          </div>
-          <Row gutter={[40, 40]} style={rowStyle}>
-            {data.map((el) => (
-              <Col
-                key={el.id}
-                xs={24}
-                sm={24}
-                md={24}
-                lg={12}
-                xl={12}
-                className="gutter-row"
-                span={12}
-              >
-                <div style={styleForDescriptionLay}>
-                  <Description element={el} />
-                </div>
-              </Col>
-            ))}
-          </Row>
-          <Pagination
-            current={currentPage}
-            total={totalPages * 10}
-            style={pagStyle}
-            className={!totalPages ? "hidden" : null}
-            onChange={(page) => {
-              this.onChangePag(page);
-            }}
-          />
-        </div>
-        <div
-          className="contentBlock__rated"
-          style={{ display: switchedOn === "#Rated" ? "block" : "none" }}
-        >
-          <RatedListConsumer>
-            {(value) => {
-              return (
-                <Row gutter={[40, 40]} style={rowStyle}>
-                  {value.rate.map((el) => (
-                    <Col
-                      key={el.id}
-                      xs={24}
-                      sm={24}
-                      md={24}
-                      lg={12}
-                      xl={12}
-                      className="gutter-row"
-                      span={12}
-                    >
-                      <div style={styleForDescriptionLay}>
-                        <Description element={el} />
-                      </div>
-                    </Col>
-                  ))}
-                </Row>
-              );
-            }}
-          </RatedListConsumer>
-        </div>
+        <NavigationTab onSwitch={this.onSwitch} />
+        <BodyCotent
+          switchedOn={switchedOn}
+          inputValue={inputValue}
+          onDelayedSearch={this.onDelayedSearch}
+          onChangeInput={this.onChangeInput}
+          someFound={someFound}
+          isLoading={isLoading}
+          isConnected={isConnected}
+          data={data}
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onChangePag={this.onChangePag}
+        />
+
+        <RatedList switchedOn={switchedOn} />
       </>
     );
   }
