@@ -5,24 +5,17 @@ import Description from "../Description/Description";
 export default class BodyCotent extends React.Component {
   render() {
     const { switchedOn } = this.props;
-    const rowStyle = {
-      marginBottom: "auto",
-    };
-    const styleForDescriptionLay = {
-      height: "279px",
-      boxShadow: "4px 4px 10px 5px #D9D9D9",
-      display: "flex",
-      justifyContent: "flex-end",
-    };
+
     return (
       <div
-        className="contentBlock__rated"
-        style={{ display: switchedOn === "#Rated" ? "block" : "none" }}
+        className={`contentBlock__rated ${
+          switchedOn === "#Rated" ? "displayBlock" : "displayNone"
+        }`}
       >
         <RatedListConsumer>
           {(value) => {
             return (
-              <Row gutter={[40, 40]} style={rowStyle}>
+              <Row gutter={[40, 40]} className="description__list">
                 {value.rate.map((el) => (
                   <Col
                     key={el.id}
@@ -34,7 +27,7 @@ export default class BodyCotent extends React.Component {
                     className="gutter-row"
                     span={12}
                   >
-                    <div style={styleForDescriptionLay}>
+                    <div className="description__wrapper">
                       <Description element={el} />
                     </div>
                   </Col>

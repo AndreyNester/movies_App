@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import ContentBLock from "./components/ContentBlock/ContentBlock.jsx";
-import { Layout, theme } from "antd";
+import { Layout } from "antd";
 
 import { GenresProvider } from "./components/genres-context/genres-context.jsx";
 import { RatedListProvider } from "./components/ratedList-context/ratedList-context.jsx";
@@ -9,10 +9,6 @@ import { RatedListProvider } from "./components/ratedList-context/ratedList-cont
 const { Content } = Layout;
 
 const App = () => {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
-
   const [state, setState] = useState({ genres: [], rated: [] });
 
   useEffect(() => {
@@ -59,27 +55,8 @@ const App = () => {
   return (
     <Layout className="layout">
       <GenresProvider value={state.genres}>
-        <Content
-          className="app__layout"
-          style={{
-            padding: "0 50px",
-            flexGrow: 1,
-            width: "90%",
-            maxWidth: "1250px",
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}
-        >
-          <div
-            className="site-layout-content"
-            style={{
-              background: colorBgContainer,
-              minHeight: "100vh",
-              padding: "20px 32px",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
+        <Content className="app__layout">
+          <div className="site-layout-content">
             <RatedListProvider value={{ onRated, rate: state.rated }}>
               <ContentBLock />
             </RatedListProvider>

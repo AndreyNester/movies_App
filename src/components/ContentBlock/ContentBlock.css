@@ -34,6 +34,7 @@
 
 .noFoundMarker {
   margin: 10px;
+  margin-bottom: 50px;
 }
 
 .noFoundMarker.hidden {
@@ -43,4 +44,38 @@
   margin-bottom: 20px;
   display: flex;
   justify-content: center;
+}
+
+.Content__input{
+  margin-bottom: 20px;
+}
+
+.displayBlock{
+  display: block !important;
+}
+
+.displayNone{
+  display: none !important;
+}
+
+.pagination{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.description__list{
+  margin-bottom: auto;
+}
+
+.description__wrapper{
+  height: 279px;
+  box-shadow: 4px 4px 10px 5px #D9D9D9;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Description__description{
+  width: 350px;
+  padding: 20px;
 }

@@ -135,23 +135,24 @@ export default class ContentBlock extends React.Component {
       switchedOn,
     } = this.state;
 
+    const BodyCotentProps = {
+      switchedOn: switchedOn,
+      inputValue: inputValue,
+      onDelayedSearch: this.onDelayedSearch,
+      onChangeInput: this.onChangeInput,
+      someFound: someFound,
+      isLoading,
+      isConnected,
+      data,
+      currentPage,
+      totalPages,
+      onChangePag: this.onChangePag,
+    };
+
     return (
       <>
         <NavigationTab onSwitch={this.onSwitch} />
-        <BodyCotent
-          switchedOn={switchedOn}
-          inputValue={inputValue}
-          onDelayedSearch={this.onDelayedSearch}
-          onChangeInput={this.onChangeInput}
-          someFound={someFound}
-          isLoading={isLoading}
-          isConnected={isConnected}
-          data={data}
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onChangePag={this.onChangePag}
-        />
-
+        <BodyCotent BodyCotentProps={BodyCotentProps} />
         <RatedList switchedOn={switchedOn} />
       </>
     );
