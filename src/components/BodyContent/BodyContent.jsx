@@ -35,9 +35,7 @@ export default class BodyCotent extends React.Component {
           value={inputValue}
           placeholder="Search films"
           onKeyUp={() => onDelayedSearch()}
-          onChange={(e) => {
-            onChangeInput(e);
-          }}
+          onChange={(e) => onChangeInput(e)}
         />
         <h2 className={someFound ? "noFoundMarker hidden" : "noFoundMarker"}>
           No films found

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class RatedStarsComponent extends React.Component {
+export default class FilmRating extends React.Component {
   render() {
     const { rating } = this.props;
     return (

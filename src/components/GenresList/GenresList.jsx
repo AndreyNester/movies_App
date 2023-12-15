@@ -1,7 +1,7 @@
 import React from "react";
 import { GenresConsumer } from "../genres-context/genres-context";
 
-export default class Description extends React.Component {
+export default class GenresList extends React.Component {
   render() {
     const { genreIds } = this.props;
     return (
