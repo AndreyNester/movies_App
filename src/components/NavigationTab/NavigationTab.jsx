@@ -1,5 +1,6 @@
 import React from "react";
 import { Anchor } from "antd";
+import "./NavigationTab.css";
 
 export default class NavigationTab extends React.Component {
   render() {
@@ -7,6 +8,7 @@ export default class NavigationTab extends React.Component {
     return (
       <nav className="contentBlock__nav">
         <Anchor
+          affix={false}
           onClick={(e, link) => onSwitch(link.href)}
           direction="horizontal"
           items={[

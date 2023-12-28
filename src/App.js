@@ -11,6 +11,7 @@ const { Content } = Layout;
 
 const App = () => {
   const [state, setState] = useState({ genres: [], rated: [] });
+  console.log(state);
 
   useEffect(() => {
     getGenres()

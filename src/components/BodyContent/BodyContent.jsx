@@ -5,6 +5,7 @@ import { Input, Pagination } from "antd";
 import ErrorsComponent from "../ErrorsComponent/ErrorsComponent";
 import ResultList from "../ResultList/ResultList";
 import Spinner from "../Spinner/Spinner";
+import "./BodyContent.css";
 
 export default class BodyCotent extends React.Component {
   render() {

@@ -1,0 +1,16 @@
+.contentBlock__rated.displayBlock{
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.reatedList__pagination{
+margin-top: 20px;
+text-align: center; 
+
+}
+
+.reatedList__pagination> li.ant-pagination-item {
+  display: none;
+}
