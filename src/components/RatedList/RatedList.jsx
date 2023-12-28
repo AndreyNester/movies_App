@@ -31,7 +31,6 @@ export default class BodyCotent extends React.Component {
                 return acc;
               }
             }, []);
-            console.log(test.length);
             return (
               <>
                 <Row gutter={[40, 40]} className="description__list">
